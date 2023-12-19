@@ -11,5 +11,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
+  },
+  "optionalDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-adjunct": "^4.12.2"
   }
 }
