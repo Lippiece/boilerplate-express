@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require("body-parser")
 
 const app = express()
 
@@ -10,6 +11,8 @@ app.use((req, _res, next) => {
 })
 
 app.use("/public", express.static(`${__dirname}/public`))
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get("/", (_req, res) => {
   res.sendFile(`${__dirname}/views/index.html`)
@@ -43,6 +46,12 @@ app.get("/:word/echo", (req, res) => {
 
 app.get("/name", (req, res) => {
   const { first, last } = req.query
+
+  res.json({ name: `${first} ${last}` })
+})
+
+app.post("/name", (req, res) => {
+  const { first, last } = req.body
 
   res.json({ name: `${first} ${last}` })
 })
